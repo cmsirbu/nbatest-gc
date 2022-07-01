@@ -1,4 +1,4 @@
-# Nautobot Golden Configuration
+# Nautobot Golden Config
 
 Developer guide.
 
@@ -12,5 +12,5 @@ Contributing to the App <dev_contributing>
 
 ```{toctree}
 :maxdepth: 3
-Nautobot Golden Configuration </dev/api/nautobot_golden_config/index>
+Nautobot Golden Config </dev/api/nautobot_golden_config/index>
 ```

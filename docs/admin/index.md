@@ -1,4 +1,4 @@
-# Nautobot Golden Configuration
+# Nautobot Golden Config
 
 Administrator's guide.
 

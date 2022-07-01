@@ -1,17 +1,47 @@
 # Contributing to the App
 
-```{admonition} Developer Note - Remove Me!
-Information on how to contribute fixes, functionality, or documentation changes back to the project.
-```
+The project is packaged with a light development environment based on `docker-compose` to help with the local development of the project and to run tests within TravisCI.
 
-Pull requests are welcomed and automatically built and tested against multiple version of Python and multiple version of Nautobot through GitHub Actions.
-
-The project is packaged with a light development environment based on `docker-compose` to help with the local development of the project and to run the tests within GitHub Actions.
-
-The project is following Network to Code software development guideline and is leveraging:
-
-- Black, Pylint, Bandit and pydocstyle for Python linting and formatting.
+The project is following Network to Code software development guidelines and are leveraging the following:
+- Black, Pylint, Bandit, flake8, and pydocstyle for Python linting and formatting.
 - Django unit test to ensure the plugin is working properly.
+
+## Branching Policy
+
+The branching policy includes the following tenets:
+
+- The develop branch is the branch of the next major and minor paired version planned.
+- The `stable-<major>.<minor>` branch is the branch of the latest version within that major/minor version.
+- The `stable-<major>.<minor>` branch will have all of the latest bug fixes and security patches, and may or may not represent the released version.
+- PRs intended to add new features should be sourced from the develop branch.
+- PRs intended to add new features that break backward compatability should be discussed before a PR is created.
+- PRs intended to address bug fixes and security patches should be sourced from `stable-<major>.<minor>`.
+
+Nautobot Golden Config will observe semantic versioning, as of 1.0. This may result in an quick turn around in minor versions to keep
+pace with an ever growing feature set.
+
+## Release Policy
+
+Nautobot Golden Config has currently no intended scheduled release schedule, and will release new feature in minor versions.
+
+When a new release of any kind (e.g. from develop to main, or a release of a `stable-<major>.<minor>`) is created the following should happen.
+- A release PR is created with:
+  - Update to the CHANGELOG.md file to reflect the changes.
+  - Change the version from `<major>.<minor>.<patch>-beta` to `<major>.<minor>.<patch>` in pyproject.toml.
+  - Set the PR to the proper branch, e.g. either `main` or `stable-<major>.<minor>`.
+- Ensure the tests for the PR pass.
+- Merge the PR.
+- Create a new tag:
+  - The tag should be in the form of `v<major>.<minor>.<patch>`.
+  - The title should be in the form of `v<major>.<minor>.<patch>`.
+  - The description should be the changes that were added to the CHANGELOG.md document.
+- If merged into main, then push from main to develop, in order to retain the merge commit created when the PR was merged
+- If the is a new `<major>.<minor>`, create a `stable-<major>.<minor>` branch and push that to the repo.
+- A post release PR is created with.
+  - Change the version from `<major>.<minor>.<patch>` to `<major>.<minor>.<patch + 1>-beta` in both pyproject.toml and `nautobot.__init__.__version__`.
+  - Set the PR to the proper branch, e.g. either `develop` or `stable-<major>.<minor>`.
+  - Once tests pass, merge. 
+
 
 ### Development Environment
 
@@ -25,7 +55,7 @@ The [PyInvoke](http://www.pyinvoke.org/) library is used to provide some helper 
 
 - `nautobot_ver`: the version of Nautobot to use as a base for any built docker containers (default: latest)
 - `project_name`: the default docker compose project name (default: nautobot_golden_config)
-- `python_ver`: the version of Python to use as a base for any built docker containers (default: 3.7)
+- `python_ver`: the version of Python to use as a base for any built docker containers (default: 3.8)
 - `local`: a boolean flag indicating if invoke tasks should be run on the host or inside the docker containers (default: False, commands will be run in docker containers)
 - `compose_dir`: the full path to a directory containing the project compose files
 - `compose_files`: a list of compose files applied in order (see [Multiple Compose files](https://docs.docker.com/compose/extends/#multiple-compose-files) for more information)
@@ -34,13 +64,11 @@ Using **PyInvoke** these configuration options can be overridden using [several 
 
 #### Local Poetry Development Environment
 
-1. Copy `development/creds.example.env` to `development/creds.env` (This file will be ignored by Git and Docker)
-2. Uncomment the `NAUTOBOT_DB_HOST`, `NAUTOBOT_REDIS_HOST`, and `NAUTOBOT_CONFIG` variables in `development/creds.env`
-3. Create an `invoke.yml` file with the following contents at the root of the repo (you can also `cp invoke.example.yml invoke.yml` and edit as necessary):
+- Create an `invoke.yml` file with the following contents at the root of the repo and edit as necessary
 
 ```yaml
 ---
-{ { cookiecutter.plugin_name } }:
+nautobot_golden_config:
   local: true
   compose_files:
     - "docker-compose.requirements.yml"
@@ -93,37 +121,43 @@ To either stop or destroy the development environment use the following options.
 
 ### CLI Helper Commands
 
-The project is coming with a CLI helper based on [invoke](http://www.pyinvoke.org/) to help setup the development environment. The commands are listed below in 3 categories `dev environment`, `utility` and `testing`.
 
-Each command can be executed with `invoke <command>`. Environment variables `INVOKE_NAUTOBOT_GOLDEN_CONFIG_PYTHON_VER` and `INVOKE_NAUTOBOT_GOLDEN_CONFIG_NAUTOBOT_VER` may be specified to override the default versions. Each command also has its own help `invoke <command> --help`
+The project features a CLI helper based on [invoke](http://www.pyinvoke.org/) to help setup the development environment. The commands are listed below in 3 categories:
+- `dev environment`
+- `utility`
+- `testing`. 
 
-#### Docker dev environment
+Each command can be executed with `invoke <command>`. All commands support the arguments `--nautobot-ver` and `--python-ver` if you want to manually define the version of Python and Nautobot to use. Each command also has its own help `invoke <command> --help`
 
-```no-highlight
+> Note: to run the mysql (mariadb) development environment, set the environment variable as such `export NAUTOBOT_USE_MYSQL=1`.
+
+
+### Local Development Environment
+
+```
   build            Build all docker images.
   debug            Start Nautobot and its dependencies in debug mode.
   destroy          Destroy all containers and volumes.
-  restart          Restart Nautobot and its dependencies.
+  restart          Restart Nautobot and its dependencies in detached mode.
   start            Start Nautobot and its dependencies in detached mode.
   stop             Stop Nautobot and its dependencies.
 ```
 
-#### Utility
+### Utility 
 
-```no-highlight
+```
   cli              Launch a bash shell inside the running Nautobot container.
   create-user      Create a new user in django (default: admin), will prompt for password.
   makemigrations   Run Make Migration in Django.
   nbshell          Launch a nbshell session.
-  shell-plus       Launch a shell_plus session, which uses iPython and automatically imports all models.
 ```
 
-#### Testing
+### Testing 
 
-```no-highlight
+```
   bandit           Run bandit to validate basic static code security analysis.
   black            Run black to check that Python files adhere to its style standards.
-  flake8           This will run flake8 for the specified name and Python version.
+  flake8           Run flake8 to check that Python files adhere to its style standards.
   pydocstyle       Run pydocstyle to validate docstring formatting adheres to NTC defined standards.
   pylint           Run pylint code analysis.
   tests            Run all tests for this plugin.
