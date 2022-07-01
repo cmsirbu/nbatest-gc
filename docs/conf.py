@@ -64,7 +64,7 @@ html_css_files = [
 ]
 html_logo = "_static/img/icon-GoldenConfiguration.png"
 html_theme_options = {
-    'logo_only': True,
+    'logo_only': False,
     'display_version': False,
     'sticky_navigation': False,
 }
