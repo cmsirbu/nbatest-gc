@@ -24,7 +24,7 @@ theme:
     #     text: Roboto
     #     code: Roboto Mono
     favicon: images/favicon.ico
-    logo: nautobot_logo.svg
+    logo: images/nautobot_logo.svg
     palette:
         # Palette toggle for light mode
         -   media: "(prefers-color-scheme: light)"
