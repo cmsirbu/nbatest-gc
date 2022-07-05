@@ -1,9 +1,9 @@
-dev_addr: '0.0.0.0:8000'
-edit_uri: edit/main/nautobot/docs
-site_dir: nautobot/project-static/docs
-site_name: Nautobot Documentation
-site_url: https://nautobot.readthedocs.io/
-repo_url: https://github.com/nautobot/nautobot
+dev_addr: '10.250.0.11:8000'
+edit_uri: edit/main/docs
+site_dir: docs
+site_name: Golden Configuration Documentation
+site_url: https://nbatest-mm.readthedocs.io/
+repo_url: https://github.com/nautobot/nautobot-plugin-golden-config
 theme:
     name: material
     navigation_depth: 4
@@ -11,7 +11,7 @@ theme:
         - django
         - yaml
     features:
-        - navigation.instant
+        #- navigation.instant
         - navigation.tracking
         - navigation.tabs
         - navigation.tabs.sticky
@@ -19,11 +19,11 @@ theme:
         - search.highlight
         - search.share
         #- navigation.top - a bit finnicky
-        #- navigation.indexes - needs docs review
+        - navigation.indexes
     # font:
     #     text: Roboto
     #     code: Roboto Mono
-    favicon: img/favicon.ico
+    favicon: images/favicon.ico
     logo: nautobot_logo.svg
     palette:
         # Palette toggle for light mode
@@ -62,112 +62,34 @@ markdown_extensions:
     - md_in_html
 plugins:
     - search
-    - include-markdown
 
 nav:
     - Overview: 'index.md'
-    - Documentation:
-        - Installation:
-            - Installing Prerequisites: 'installation/index.md'
-            - Installing Nautobot: 'installation/nautobot.md'
-            - Deploying Nautobot Services: 'installation/services.md'
-            - Configuring an HTTP Server: 'installation/http-server.md'
-            - External Authentication (Optional): 'installation/external-authentication.md'
-        - Docker:
-            - Overview: 'docker/index.md'
-        - Migration:
-            - Migrating from NetBox: 'installation/migrating-from-netbox.md'
-            - Upgrading Nautobot: 'installation/upgrading.md'
-            - Migrating from PostgreSQL to MySQL: 'installation/migrating-from-postgresql.md'
-        - Configuration:
-            - Configuring Nautobot: 'configuration/index.md'
-            - Required Settings: 'configuration/required-settings.md'
-            - Optional Settings: 'configuration/optional-settings.md'
-        - External Authentication:
-            - LDAP: 'configuration/authentication/ldap.md'
-            - SSO: 'configuration/authentication/sso.md'
-            - Remote Header: 'configuration/authentication/remote.md'
-        - User Guides:
-            - Git as a Data Source: 'user-guides/git-data-source.md'
-            - GraphQL: 'user-guides/graphql.md'
-        - Getting Started In the Web UI:
-            - 'user-guides/getting-started/index.md'
-            - Creating Devices: 'user-guides/getting-started/creating-devices.md'
-            - Regions: 'user-guides/getting-started/regions.md'
-            - Platforms: 'user-guides/getting-started/platforms.md'
-            - Tenants: 'user-guides/getting-started/tenants.md'
-            - Interfaces: 'user-guides/getting-started/interfaces.md'
-            - VLANS and VLAN Groups: 'user-guides/getting-started/vlans-and-vlan-groups.md'
-            - IP Address Management: 'user-guides/getting-started/ipam.md'
-            - The Search Bar: 'user-guides/getting-started/search-bar.md'
-        - Core Functionality:
-            - Circuits: 'core-functionality/circuits.md'
-            - Devices and Cabling: 'core-functionality/devices.md'
-            - Device Types: 'core-functionality/device-types.md'
-            - IP Address Management: 'core-functionality/ipam.md'
-            - Power Tracking: 'core-functionality/power.md'
-            - Secrets: 'core-functionality/secrets.md'
-            - Service Mapping: 'core-functionality/services.md'
-            - Sites and Racks: 'core-functionality/sites-and-racks.md'
-            - Tenancy: 'core-functionality/tenancy.md'
-            - Virtualization: 'core-functionality/virtualization.md'
-            - VLAN Management: 'core-functionality/vlans.md'
-        - Additional Features:
-            - Caching: 'additional-features/caching.md'
-            - Change Logging: 'additional-features/change-logging.md'
-            - Computed Fields: 'additional-features/computed-fields.md'
-            - Context Data: 'additional-features/config-contexts.md'
-            - Custom Fields: 'additional-features/custom-fields.md'
-            - Custom Links: 'models/extras/customlink.md'
-            - Dynamic Groups: 'additional-features/dynamic-groups.md'
-            - Export Templates: 'models/extras/exporttemplate.md'
-            - Git Repositories: 'models/extras/gitrepository.md'
-            - Health Check: 'additional-features/healthcheck.md'
-            - Jobs: 'additional-features/jobs.md'
-            - Job Scheduling and Approvals: 'additional-features/job-scheduling-and-approvals.md'
-            - NAPALM: 'additional-features/napalm.md'
-            - Prometheus Metrics: 'additional-features/prometheus-metrics.md'
-            - Relationships: 'models/extras/relationship.md'
-            - Statuses: 'models/extras/status.md'
-            - Tags: 'models/extras/tag.md'
-            - Template Filters: 'additional-features/template-filters.md'
-            - Webhooks: 'models/extras/webhook.md'
-        - Plugins:
-            - Using Plugins: 'plugins/index.md'
-            - Developing Plugins: 'plugins/development.md'
-            - Porting NetBox Plugins to Nautobot: 'plugins/porting-from-netbox.md'
-        - Administration:
-            - Nautobot Server: 'administration/nautobot-server.md'
-            - Nautobot Shell: 'administration/nautobot-shell.md'
-            - Permissions: 'administration/permissions.md'
-            - Replicating Nautobot: 'administration/replicating-nautobot.md'
-        - REST API:
-            - Overview: 'rest-api/overview.md'
-            - Filtering: 'rest-api/filtering.md'
-            - Authentication: 'rest-api/authentication.md'
-        - GraphQL API:
-            - Overview: 'additional-features/graphql.md'
-    - Development Guide:
-        - Introduction: 'development/index.md'
-        - Getting Started: 'development/getting-started.md'
-        - Advanced Docker Compose Usage: 'development/docker-compose-advanced-use-cases.md'
-        - Best Practices: 'development/best-practices.md'
-        - Style Guide: 'development/style-guide.md'
-        - Extending Models: 'development/extending-models.md'
-        - Application Registry: 'development/application-registry.md'
-        - Page Templates: 'development/templates.md'
-        - Navigation Menu: 'development/navigation-menu.md'
-        - Home Page Panels: 'development/homepage.md'
-        - User Preferences: 'development/user-preferences.md'
-        - Release Checklist: 'development/release-checklist.md'
-    - Release Notes:
-        - Version 1.0: 'release-notes/version-1.0.md'
-        - Version 1.1: 'release-notes/version-1.1.md'
-        - Version 1.2: 'release-notes/version-1.2.md'
-        - Version 1.3: 'release-notes/version-1.3.md'
-    - Nautobot Apps:
-        - Overview: 'apps/index.md'
-        - Hosted App Documentation:
-            - Nautobot Device Onboarding: 'https://nbatest-main.readthedocs.io/projects/device-onboarding/en/latest/'
-            - Nautobot Golden Configuration: 'https://nbatest-main.readthedocs.io/projects/golden-config/en/latest/'
-        - Nautobot Apps Ecosystem: 'apps/nautobot-apps.md'
+    - User Guide:
+        - App Overview: 'user/app_overview.md'
+        - Using the App: 'user/app_use_cases.md'
+        - Navigate Backup: 'user/app_feature_backup.md'
+        - Navigate Compliance: 'user/app_feature_compliance.md'
+        - Navigate Compliance CLI: 'user/app_feature_compliancecli.md'
+        - Navigate Compliance JSON: 'user/app_feature_compliancejson.md'
+        - Navigate Compliance Custom: 'user/app_feature_compliancecustom.md'
+        - Navigate Intended: 'user/app_feature_intended.md'
+        - Navigate SoT Agg: 'user/app_feature_sotagg.md'
+        - Getting Started: 'user/app_getting_started.md'
+        - Frequently Asked Questions: 'user/app_faq.md'
+        - External Interactions: 'user/app_external_interactions.md'
+    - Administrator Guide:
+        - Install and Configure: 'admin/admin_install.md'
+        - Upgrade: 'admin/admin_upgrade.md'
+        - Uninstall: 'admin/admin_uninstall.md'
+        - Release Notes:
+            - 'admin/release_notes/index.md'
+            - v1.0: 'admin/release_notes/version_1.0.md'
+            - v0.10: 'admin/release_notes/version_0.10.md'
+            - v0.9: 'admin/release_notes/version_0.9.md'
+    - Developer Guide:
+        - Extending the App: 'dev/dev_extending.md'
+        - Contributing to the App: 'dev/dev_contributing.md'
+    - Nautobot Apps Home ↗︎: 'https://nbatest-mm.readthedocs.io/en/latest/apps/'
+
+

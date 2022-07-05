@@ -4,9 +4,9 @@
 
 The Golden Config plugin **Intended Configuration** job generates intended state files for each device in the plugin setting's configured scope. An intended state file contains the output from rendering the device's Source of Truth Aggregation values through the Jinja templates used by the plugin.
 
-The job itself is a Nornir play which uses a single Jinja template per device. Source of Truth Aggregation data comes from the GraphQL query configured in the Golden Config plugin's settings. An important component of the SoT Aggregation data are the `config_context` values. `config_context` should contain a vendor-neutral, JSON structured representation of a device's configuration values: a list of NTP/AAA/Syslog servers, common VRFs, etc. See [Config Contexts](https://nautobot.readthedocs.io/en/latest/additional-features/config-contexts/#configuration-contexts) for more information. 
+The job itself is a Nornir play which uses a single Jinja template per device. Source of Truth Aggregation data comes from the GraphQL query configured in the Golden Config plugin's settings. An important component of the SoT Aggregation data are the `config_context` values. `config_context` should contain a vendor-neutral, JSON structured representation of a device's configuration values: a list of NTP/AAA/Syslog servers, common VRFs, etc. See [Config Contexts](https://nautobot.readthedocs.io/en/latest/additional-features/config-contexts/#configuration-contexts) for more information.
 
-The Source of Truth Aggregation feature of the plugin must be enabled for the plugin to generate intended configuration state output. 
+The Source of Truth Aggregation feature of the plugin must be enabled for the plugin to generate intended configuration state output.
 
 There can only be a single Jinja template per device. Device configurations can become daunting to create via a Jinja template, if you try to place all of the logic for a device's configuration inside a single Jinja2 file. These template files can quickly become too complex to maintain. So, it is often advantageous to break configurations into smaller feature-oriented snippets, each contained in their own discrete template file. Operators often keep their main, top-level, template simple and easy to maintain by only placing include statements in it:
 
@@ -19,7 +19,7 @@ There can only be a single Jinja template per device. Device configurations can 
 {% include os ~ '/ntp.j2' %}
 !
 ```
-or 
+or
 
 ```jinja
 !
@@ -29,6 +29,7 @@ or
 !
 {% endfor %}
 ```
+
 In these examples, `/services.j2`, `/ntp.j2`, etc. could contain the actual Jinja code which renders the configuration for their corresponding features. Alternately, in more complex environments, these files could themselves contain only include statements in order to create a hierarchy of template files so as to keep each individual file neat and simple. Think of the main, top-level, template as an entrypoint into a hierarchy of templates. A well thought out structure to your templates is necessary to avoid the temptation to place all logic into a small number of templates. Like any code, Jinja2 functions become harder to manage, more buggy, and more fragile as you add complexity, so any thing which you can do to keep them simple will help your automation efforts.
 
 ## Adding Jinja2 Filters to the Environment.
@@ -108,4 +109,4 @@ This is exactly the same concept as described in [Backup Repository Matching Rul
 
 ## Data
 
-The data provided while rendering the configuration of a device is described in the [SoT Aggregation](./app_feature_sotagg.md) overview. 
+The data provided while rendering the configuration of a device is described in the [SoT Aggregation](./app_feature_sotagg.md) overview.

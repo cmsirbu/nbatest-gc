@@ -1,12 +1,6 @@
 # Quick Start Guides
 
-- [Quick Start Guides](#quick-start-guides)
-- [Backup Configuration](#backup-configuration)
-- [Intended Configuration](#intended-configuration)
-- [Compliance](#compliance)
-- [Load Properties from Git](#load-properties-from-git)
-
-# Backup Configuration
+## Backup Configuration
 
 Follow the steps below to get up and running for the configuration backup element of the plugin.
 
@@ -42,7 +36,7 @@ Follow the steps below to get up and running for the configuration backup elemen
 
 > For in-depth details see [Navigating Backup](./navigating-backup.md)
 
-# Intended Configuration
+## Intended Configuration
 
 Follow the steps below to get up and running for the intended configuration element of the plugin.
 
@@ -94,7 +88,7 @@ Follow the steps below to get up and running for the intended configuration elem
 
 > For in-depth details see [Navigating Intended](./navigating-intended.md)
 
-# Compliance
+## Compliance
 
 Compliance requires Backups and Intended Configurations in order to be executed.
 
@@ -120,7 +114,7 @@ Compliance requires Backups and Intended Configurations in order to be executed.
 
 > For in-depth details see [Navigating Compliance](./navigating-compliance.md)
 
-# Load Properties from Git
+## Load Properties from Git
 
 Golden Config properties include: Compliance Features, Compliance Rules, Config Removals, and Config Replacements. They can be created via the UI, API, or alternatively you can load these properties from a Git repository, defined in YAML files following the this directory structure (you can skip any of them if not apply):
 
@@ -208,7 +202,3 @@ The `YAML` files will contain all the attributes necessary to identify an object
    4. Click Create (This step runs an automatic sync).
 
 2. Run `sync` and all the properties will be created/updated in a declarative way and following the right order to respect the dependencies between objects. The import task will raise a `warning` if the dependencies are not available yet (for instance, a referenced `Platform` is not created), so the `sync` process will continue, and you could then fix these warnings by reviewing the mismatch (maybe creating the required object) and run the `sync` process again.
-
-```
-
-```
