@@ -1,8 +1,8 @@
 dev_addr: '10.250.0.11:8000'
 edit_uri: edit/main/docs
-site_dir: docs
+site_dir: golden-config/static/golden-config/docs
 site_name: Golden Configuration Documentation
-site_url: https://nbatest-mm.readthedocs.io/
+site_url: https://nbatest-mm.readthedocs.io/projects/golden-config/
 repo_url: https://github.com/nautobot/nautobot-plugin-golden-config
 theme:
     name: material
@@ -23,8 +23,8 @@ theme:
     # font:
     #     text: Roboto
     #     code: Roboto Mono
-    favicon: images/favicon.ico
-    logo: images/nautobot_logo.svg
+    favicon: assets/favicon.ico
+    logo: assets/nautobot_logo.svg
     palette:
         # Palette toggle for light mode
         -   media: "(prefers-color-scheme: light)"
@@ -44,7 +44,7 @@ theme:
                 icon: material/weather-night
                 name: Switch to light mode
 extra_css:
-    - extra.css
+    - assets/extra.css
 extra:
     generator: false
     # social:

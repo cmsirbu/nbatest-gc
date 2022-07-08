@@ -6,11 +6,13 @@ hide:
 # Nautobot Golden Configuration
 
 <p align="center">
-  <img src="images/icon-NautobotGoldenConfig.png" height="200px">
+  <img src="images/icon-NautobotGoldenConfig.png" alt="Logo" class="logo">
   <br>
   <a href="https://github.com/nautobot/nautobot-plugin-golden-config/actions"><img src="https://github.com/nautobot/nautobot-plugin-golden-config/actions/workflows/ci.yml/badge.svg?branch=main"></a>
+  <a href="https://nbatest-mm.readthedocs.io/projects/golden-config/en/latest/"><img src="https://readthedocs.org/projects/nbatest-gc/badge/"></a>
   <a href="https://pypi.org/project/nautobot-golden-config/"><img src="https://img.shields.io/pypi/v/nautobot-golden-config"></a>
   <a href="https://pypi.org/project/nautobot-golden-config/"><img src="https://img.shields.io/pypi/dm/nautobot-golden-config"></a>
+
   <br>
   An App for <a href="https://github.com/nautobot/nautobot">Nautobot</a>.
 </p>
