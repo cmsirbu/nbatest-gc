@@ -90,6 +90,4 @@ nav:
     - Developer Guide:
         - Extending the App: 'dev/dev_extending.md'
         - Contributing to the App: 'dev/dev_contributing.md'
-    - Nautobot Apps Home ↗︎: 'https://nbatest-ml.readthedocs.io/en/latest/apps/'
-
-
+    - Nautobot Docs Home ↗︎: 'https://nbatest-ml.readthedocs.io/'
