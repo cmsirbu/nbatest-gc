@@ -35,3 +35,8 @@
 img.logo {
     height: 100px;
 }
+
+img.copyright-logo {
+    height: 22px;
+    vertical-align: middle;
+}
