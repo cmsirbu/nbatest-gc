@@ -42,6 +42,12 @@ theme:
                 name: Switch to light mode
 extra_css:
     - assets/extra.css
+    #- assets/readthedocs-doc-embed.css
+extra_javascript:
+    - assets/jquery-3.6.0.min.js
+    #- assets/theme.js
+    #- assets/readthedocs-doc-embed.js
+
 extra:
     generator: false
     ntc_sponsor: true
