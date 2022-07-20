@@ -47,7 +47,7 @@ extra_css:
 # jquery to be loaded by RTD conditionally - remove once merged
 # https://github.com/readthedocs/readthedocs.org/pull/9359
 extra_javascript:
-    - assets/jquery-3.6.0.min.js
+    - https://code.jquery.com/jquery-3.6.0.min.js
 
 extra:
     generator: false
@@ -56,9 +56,15 @@ extra:
         -   icon: fontawesome/solid/rss
             link: https://blog.networktocode.com/blog/tags/nautobot
             name: NetworkToCode Blog
+        -   icon: fontawesome/brands/youtube
+            link: https://www.youtube.com/playlist?list=PLjA0bhxgryJ2Ts4GJMDA-tPzVWEncv4pb
+            name: Nautobot Videos
         -   icon: fontawesome/brands/slack
             link: https://www.networktocode.com/community/
             name: NetworkToCode Community
+        -   icon: fontawesome/brands/github
+            link: https://github.com/nautobot/nautobot
+            name: GitHub Repo
         -   icon: fontawesome/brands/twitter
             link: https://twitter.com/networktocode
             name: NetworkToCode Twitter
