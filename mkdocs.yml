@@ -8,7 +8,7 @@ copyright: Copyright &copy; 2022 The Authors
 theme:
     name: material
     navigation_depth: 4
-    custom_dir: overrides
+    custom_dir: docs/assets/overrides
     hljs_languages:
         - django
         - yaml
@@ -27,7 +27,6 @@ theme:
         -   media: "(prefers-color-scheme: light)"
             scheme: default
             primary: black
-            #accent: deep orange
             toggle:
                 icon: material/weather-sunny
                 name: Switch to dark mode
@@ -36,7 +35,6 @@ theme:
         -   media: "(prefers-color-scheme: dark)"
             scheme: slate
             primary: black
-            #accent: deep orange
             toggle:
                 icon: material/weather-night
                 name: Switch to light mode
@@ -68,8 +66,6 @@ extra:
         -   icon: fontawesome/brands/twitter
             link: https://twitter.com/networktocode
             name: NetworkToCode Twitter
-watch:
-    - overrides
 markdown_extensions:
     - admonition
     - toc:
