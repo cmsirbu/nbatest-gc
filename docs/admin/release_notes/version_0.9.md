@@ -1,6 +1,6 @@
 # v0.9 Release Notes
 
-- Initial Release
+- Initial release
 
 ## v0.9.10 - 2021-11
 

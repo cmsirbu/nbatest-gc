@@ -74,6 +74,14 @@ markdown_extensions:
     - md_in_html
 plugins:
     - search
+    - mkdocstrings:
+        default_handler: python
+        handlers:
+            python:
+                paths: [.]
+                options:
+                    show_root_heading: true
+                    show_category_heading: true
 
 nav:
     - Overview: 'index.md'
@@ -96,10 +104,17 @@ nav:
         - Uninstall: 'admin/admin_uninstall.md'
         - Release Notes:
             - 'admin/release_notes/index.md'
+            - v1.1: 'admin/release_notes/version_1.1.md'
             - v1.0: 'admin/release_notes/version_1.0.md'
             - v0.10: 'admin/release_notes/version_0.10.md'
             - v0.9: 'admin/release_notes/version_0.9.md'
     - Developer Guide:
         - Extending the App: 'dev/dev_extending.md'
         - Contributing to the App: 'dev/dev_contributing.md'
+        - Code Reference:
+            - 'dev/code_reference/index.md'
+            - Views: 'dev/code_reference/views.md'
+            - Models: 'dev/code_reference/models.md'
+            - API: 'dev/code_reference/api.md'
+            - Example.Google: 'dev/code_reference/example_google.md'
     - Nautobot Docs Home ↗︎: 'https://nbatest-ml.readthedocs.io/'
