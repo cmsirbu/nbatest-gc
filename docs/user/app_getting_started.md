@@ -15,7 +15,7 @@ Follow the steps below to get up and running for the configuration backup elemen
 2. Add any git repositories that will be used to house the backup configurations.
 
    1. In the UI `Extensibility -> Git Repositories`. Click Add.
-   2. Populate the Git Repository data for the backup. [Git Settings](./navigating-golden.md#git-settings)
+   2. Populate the Git Repository data for the backup. [Git Settings](./app_use_cases.md#git-settings)
    3. Make sure to select the **Provides** called `backup configs`.
    4. Click Create.
 
@@ -24,14 +24,14 @@ Follow the steps below to get up and running for the configuration backup elemen
    1. Navigate to `Golden Config -> Settings` under the Golden Configuration Section.
    2. Create new or select one of the existing `Settings` objects
    3. Fill out the Backup Repository. (The dropdown will show the repository that was just created.)
-   4. Fill out Backup Path Template. Typically `{{obj.site.slug}}/{{obj.name}}.cfg`, see [Setting Details](./navigating-golden.md#application-settings)
+   4. Fill out Backup Path Template. Typically `{{obj.site.slug}}/{{obj.name}}.cfg`, see [Setting Details](./app_use_cases.md#application-settings)
    5. Select whether or not to do a connectivity check per device.
    6. Click Save.
 
 4. Create Configuration Removals and Replacements.
 
-   1. [Config Removals](./navigating-backup.md#config-removals)
-   2. [Config Replacements](./navigating-backup.md#config-replacements)
+   1. [Config Removals](./app_feature_backup.md#config-removals)
+   2. [Config Replacements](./app_feature_backup.md#config-replacements)
 
 5. Execute the Backup.
 
@@ -40,7 +40,7 @@ Follow the steps below to get up and running for the configuration backup elemen
    3. Select what to run the backup on.
    4. Run the Job by clicking "Run Job" button.
 
-> For in-depth details see [Navigating Backup](./navigating-backup.md)
+> For in-depth details see [Navigating Backup](./app_feature_backup.md)
 
 # Intended Configuration
 
@@ -55,14 +55,14 @@ Follow the steps below to get up and running for the intended configuration elem
 2. Add any git repositories that will be used to house the intended configurations.
 
    1. In the UI `Extensibility -> Git Repositories`. Click Add.
-   2. Populate the Git Repository data for the intended. [Git Settings](./navigating-golden.md#git-settings)
+   2. Populate the Git Repository data for the intended. [Git Settings](./app_feature_backup.md#git-settings)
    3. Make sure to select the **Provides** called `intended configs`.
    4. Click Create.
 
 3. Add the git repository that will be used to house the Jinja2 templates.
 
    1. In the UI `Extensibility -> Git Repositories`. Click Add.
-   2. Populate the Git Repository data for the jinja2 templates. [Git Settings](./navigating-golden.md#git-settings)
+   2. Populate the Git Repository data for the jinja2 templates. [Git Settings](./app_feature_backup.md#git-settings)
    3. Make sure to select the **Provides** called `jinja templates`.
    4. Click Create.
 
@@ -71,16 +71,16 @@ Follow the steps below to get up and running for the intended configuration elem
    1. Navigate to `Golden Config -> Settings` under the Golden Configuration Section.
    2. Create new or select one of the existing `Settings` objects
    3. Fill out the Intended Repository. (The dropdown will show the repository that was just created.)
-   4. Fill out Intended Path Template. Typically `{{obj.site.slug}}/{{obj.name}}.cfg`, see [Setting Details](./navigating-golden.md#application-settings)
+   4. Fill out Intended Path Template. Typically `{{obj.site.slug}}/{{obj.name}}.cfg`, see [Setting Details](./app_feature_backup.md#application-settings)
    5. Fill out Jinja Repository. (The dropdown will show the repository that was just created.)
    6. Fill out Jinja Path Template.  Typically `{{obj.platform.slug}}.j2`.
 
 5. Determine what data(variables) the Jinja2 templates need from Nautobot.
 
-   1. See [Source of Truth Agg Details](./navigating-sot-agg.md)
+   1. See [Source of Truth Agg Details](./app_feature_sotagg.md)
    2. In the UI `Extensibility -> GraphQL Queries`. Click Add.
    3. Populate the GraphQL data.
-   4. Make sure to follow the format specified in the **GraphQL** section in [Source of Truth Agg Details](./navigating-sot-agg.md)
+   4. Make sure to follow the format specified in the **GraphQL** section in [Source of Truth Agg Details](./app_feature_sotagg.md)
    5. Click Create.
    6. Navigate to `Golden Config -> Settings` under the Golden Configuration Section.
    7. Select a SoTAgg Saved Query. (The dropdown will show the GraphQL query that was just created.)
@@ -92,7 +92,7 @@ Follow the steps below to get up and running for the intended configuration elem
    3. Select what to run the intended generation on.
    4. Run the Job.
 
-> For in-depth details see [Navigating Intended](./navigating-intended.md)
+> For in-depth details see [Navigating Intended](./app_feature_intended.md)
 
 # Compliance
 
@@ -109,7 +109,7 @@ Compliance requires Backups and Intended Configurations in order to be executed.
 5. Create a Compliance Rule.
 
    1. Navigate to `Golden Config -> Compliance Rules`.
-   2. Click Add and populate the fields, make sure the rule is linked to the feature created previously. See [Configuration Compliance Settings](./navigating-compliance.md#configuration-compliance-settings) for details.
+   2. Click Add and populate the fields, make sure the rule is linked to the feature created previously. See [Configuration Compliance Settings](./app_feature_compliance.md#configuration-compliance-settings) for details.
 
 6. Execute Compliance Check.
 
@@ -118,7 +118,7 @@ Compliance requires Backups and Intended Configurations in order to be executed.
    3. Select what to run the compliance on.
    4. Run the Job.
 
-> For in-depth details see [Navigating Compliance](./navigating-compliance.md)
+> For in-depth details see [Navigating Compliance](./app_feature_compliance.md)
 
 # Load Properties from Git
 
@@ -203,7 +203,7 @@ The `YAML` files will contain all the attributes necessary to identify an object
 1. Add the Git repository that will be used to sync Git properties.
 
    1. In the UI `Extensibility -> Git Repositories`. Click Add.
-   2. Populate the Git Repository data for the GC properties. [Git Settings](./navigating-golden.md#git-settings)
+   2. Populate the Git Repository data for the GC properties. [Git Settings](./app_use_cases.md#git-settings)
    3. Make sure to select the **Provides** called `Golden Config properties`.
    4. Click Create (This step runs an automatic sync).
 
